@@ -2,11 +2,37 @@ import React, { Component } from "react"
 import Heading from "../Reusable/Heading"
 import Img from "gatsby-image"
 
+const getCaty = items => {
+  let holdItems = items.map(items => {
+    return items.node.category
+  })
+  let holdCategories = new Set(holdItems)
+  let categories = Array.from(holdCategories)
+  categories = ["all", ...categories]
+  return categories
+}
+
 export default class CourseCart extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      courses: props.courses.edges,
       myCourses: props.courses.edges,
+      mycategories: getCaty(props.courses.edges),
+    }
+  }
+
+  catyClicked = category => {
+    let keepItsafe = [...this.state.courses]
+    if (category === "all") {
+      this.setState(() => {
+        return { myCourses: keepItsafe }
+      })
+    } else {
+      let holdme = keepItsafe.filter(({ node }) => node.category === category)
+      this.setState(() => {
+        return { myCourses: holdme }
+      })
     }
   }
 
@@ -18,6 +44,24 @@ export default class CourseCart extends Component {
       <section className="py-5 bg-light">
         <div className="container">
           <Heading title="Courses" />
+          <div className="row my-3">
+            <div className="col-10 mx-auto text-center">
+              {this.state.mycategories.map((category, index) => {
+                return (
+                  <button
+                    type="button"
+                    className="btn btn-info m-3 px-3"
+                    key={index}
+                    onClick={() => {
+                      this.catyClicked(category)
+                    }}
+                  >
+                    {category}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
           <div className="row">
             {this.state.myCourses.map(({ node }) => {
               return (
