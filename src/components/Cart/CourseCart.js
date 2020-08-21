@@ -50,7 +50,7 @@ export default class CourseCart extends Component {
                 return (
                   <button
                     type="button"
-                    className="btn btn-info m-3 px-3"
+                    className="btn btn-info m-3 px-3 text-capitalize"
                     key={index}
                     onClick={() => {
                       this.catyClicked(category)
