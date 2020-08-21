@@ -1,0 +1,13 @@
+{
+    "emmet.excludeLanguages": [
+        "markdown"
+    ],
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+        "vue-html": "html"
+    },
+    "editor.formatOnSave": true,
+    "editor.minimap.maxColumn": 60,
+    "editor.quickSuggestionsDelay": 5
+    
+}
