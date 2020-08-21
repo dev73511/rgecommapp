@@ -38,7 +38,7 @@ export default class CourseCart extends Component {
                       className="btn btn-warning snipcart-add-item"
                       data-item-id={node.id}
                       data-item-price={node.price}
-                      data-item-url="https://learncodeonlie.in"
+                      data-item-url="https://programmingwithdev.netlify.app/"
                       data-item-description=""
                       data-item-image={node.image.fixed.src}
                       data-item-name={node.title}
